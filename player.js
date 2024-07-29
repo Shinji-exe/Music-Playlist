@@ -10,6 +10,7 @@ const splitLeft = document.querySelector(".split1");
 const currentSong = document.getElementById("currentSong")
 const totalAmount = document.getElementById("total")
 const section1 = document.querySelector(".info")
+const imagePlace = document.getElementById("imagePlacement")
 
 
 let tracksongnumber = 0;
@@ -23,7 +24,7 @@ rightSide.appendChild(rightBackground);
 
 let songPicture = document.createElement('img');
 songPicture.classList.add('albumImg');
-splitLeft.appendChild(songPicture);
+imagePlace.appendChild(songPicture);
 
 let durationOfTime = document.createElement("input");
 durationOfTime.type = "range";
