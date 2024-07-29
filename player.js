@@ -354,7 +354,7 @@ setTimeout(() => {
    setTimeout(() => {
     notifyToast.classList.remove("displayUpdate")
     leftside.removeChild(notifyToast)
-   }, 5000) 
+   }, 3000) 
 }, 10);
 
 }
