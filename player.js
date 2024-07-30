@@ -399,7 +399,7 @@ setTimeout(() => {
 }
 
 function userInfo(){
-    showNotification("Yes more music and features is on the way, but keep an ear out")
+    showNotification("Yes more music and features is on the way, and I do not own any of these songs, but keep an ear out")
 }
 
 function showMusicInfo(message){
