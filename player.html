@@ -19,9 +19,8 @@
             <div class="split1">
                <button id="exclamation" onclick="userInfo()"><i  class="fa-solid fa-exclamation"></i></button> 
                 <section class="info">
-                 <p id="title">title </p>
+                <p id="title">title </p>
                 <p id="artist">artist</p>
-                <!-- <i class="fa fa-shuffle"></i> -->
                 </section>
                
                 <section class="trackInfo">
@@ -30,9 +29,16 @@
                     <p id="total">5</p>
                 </section>
 
-                <div id="imagePlacement">
+                <div id="imagePlacement"></div>
 
-                </div>
+                <div class="buttonClass">
+                    <button id="shuffle" onclick="shuffle()"><i class="fa fa-shuffle"></i></button>
+                <button id="previous" onclick="previously()"><i class="fa fa-step-backward"></i></button>
+                <button id="play" onclick="playTheSound()"><i class="fa fa-play"></i></button>
+    
+                <button id="next" onclick="skipNext()"><i class="fa fa-step-forward"></i></button>
+                <button id="loop" onclick="loop()"><i class="fa fa-repeat"></i></button>
+            </div>
                
                 <div class="buttonClass-mobile">
                     <button id="shuffle" onclick="shuffle()"><i class="fa fa-shuffle"></i></button>
@@ -47,20 +53,7 @@
          
         </div>
 
-        <div class="right">
-
-            <div class="buttonClass">
-                <button id="shuffle" onclick="shuffle()"><i class="fa fa-shuffle"></i></button>
-            <button id="previous" onclick="previously()"><i class="fa fa-step-backward"></i></button>
-            <button id="play" onclick="playTheSound()"><i class="fa fa-play"></i></button>
-
-            <button id="next" onclick="skipNext()"><i class="fa fa-step-forward"></i></button>
-            <button id="loop" onclick="loop()"><i class="fa fa-repeat"></i></button>
-        </div>
-
-        </div>
-
-    </div>
+        
 
 </body>
 </html>

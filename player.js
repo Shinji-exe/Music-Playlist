@@ -6,6 +6,7 @@ const playingMobile = document.querySelector("#playMobile")
 const next = document.getElementById('next');
 const leftside = document.querySelector(".left");
 const rightSide = document.querySelector(".right");
+
 const splitLeft = document.querySelector(".split1");
 const currentSong = document.getElementById("currentSong")
 const totalAmount = document.getElementById("total")
@@ -18,9 +19,9 @@ let isPlaying = false;
 
 let audioFile = document.createElement("audio");
 
-let rightBackground = document.createElement("img");
-rightBackground.classList.add("rightBg");
-rightSide.appendChild(rightBackground);
+// let rightBackground = document.createElement("img");
+// rightBackground.classList.add("rightBg");
+// rightSide.appendChild(rightBackground);
 
 let songPicture = document.createElement('img');
 songPicture.classList.add('albumImg');
@@ -61,14 +62,12 @@ function musicDuration() {
     if (!isNaN(audioFile.duration)) {
         position = audioFile.currentTime * (100 / audioFile.duration);
         durationOfTime.value = position;
-        
     }
     if (audioFile.ended) {
         playing.innerHTML = '<i class="fa fa-stop"></i>';
         playingMobile.innerHTML = '<i class="fa fa-stop"></i>';
         audioFile.pause();
         songPicture.classList.remove("play")
-       
     }
 }
 musicDuration()
@@ -117,17 +116,45 @@ splitLeft.appendChild(volumeAlter)
 splitLeft.appendChild(volumeNumber)
 
 volumeAlter.addEventListener("input", function(e) {
-    let volumeValue = Number(e.currentTarget.value)
+let volumeValue = Number(e.currentTarget.value)
 audioFile.volume = volumeValue / 100;
 volumeNumber.innerHTML = `${volumeValue}`
-if(volumeValue >= 65 && volumeValue < 100){
-alert("Be careful of high volume.")
-}else if(volumeValue == 100){
-alert("Way too high please turn it down!!!")
+
+
+let trackColor;
+if(volumeValue < 50){
+// alert("Be careful of high volume.")
+// volumeNumber.style.color = "orange"
+// volumeAlter.style.backgroundColor = "orange"
+trackColor = "blue"
+durationOfTime = "blue"
+volumeNumber.style.color = "blue"
+}else if (volumeValue >= 50 && volumeValue < 65){
+// alert("Way too high please turn it down!!!")
+// volumeNumber.style.color = "red"
+trackColor = "green"
+durationOfTime = "green"
+volumeNumber.style.color = "green"
+}else if(volumeValue >= 65 && volumeValue < 80){
+    trackColor = "orange"
+    durationOfTime = "orange"
+    volumeNumber.style.color = "orange"
+    volumeWarning("Careful with the volume")
+    
+}else{
+    trackColor = "red"
+    durationOfTime = "red"
+    volumeNumber.style.color = "red"
+    volumeWarning("High volume warning please turn it down....")
 }
+volumeAlter.style.background = `linear-gradient(to right, ${trackColor} ${volumeValue}%, #ddd ${volumeValue}%)`;
 })
 
-
+let initialVolumeValue = Number(volumeAlter.value);
+let initialTrackColor = initialVolumeValue < 50 ? "blue" :
+initialVolumeValue < 65 ? "green" :
+initialVolumeValue < 80 ? 'orange' : 'red';
+volumeAlter.style.background = `linear-gradient(to right, ${initialTrackColor} ${initialVolumeValue}%, #ddd ${initialVolumeValue}%)`;
 
 function setVolumeNumber(){
 
@@ -284,10 +311,7 @@ function loop() {
       });
     } 
   }
-
-  // Call the function to add the event listener
   
-
   function shuffle(){
 
 const musicList = Math.floor(Math.random() * musicThatPlays.length)
@@ -343,11 +367,26 @@ function showToast(message) {
     }, 10);
 }
 
+function volumeWarning(message){
+    let toast = document.createElement("div");
+    toast.classList.add('toast1');
+    toast.textContent = message;
+    leftside.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('show1');
+        setTimeout(() => {
+            toast.classList.remove('show1');
+            leftside.removeChild(toast);
+        }, 3000);
+    }, 10);
+}
+
 function showNotification(message){
 let notifyToast = document.createElement("div")
 notifyToast.classList.add("notifyMe")
 notifyToast.textContent = message;
-document.body.appendChild(notifyToast)
+leftside.appendChild(notifyToast)
 
 setTimeout(() => {
    notifyToast.classList.add("displayUpdate")
@@ -367,7 +406,7 @@ function showMusicInfo(message){
     let notifyToast = document.createElement("div")
     notifyToast.classList.add("musicNote")
     notifyToast.textContent = message;
-    document.body.appendChild(notifyToast)
+    leftside.appendChild(notifyToast)
     
     setTimeout(() => {
        notifyToast.classList.add("displayMusicNote")
@@ -411,9 +450,10 @@ function previously() {
 function defaultBG() {
     if (tracksongnumber === 0) {
         leftside.style.backgroundImage = "url(img/division2.jpg)";
-        rightSide.style.background = "linear-gradient(45deg, #ffffff, #ff00e6, #ff0099)";
-        rightSide.style.backgroundSize = "300%";
-        rightSide.style.animation = "sideToSide 20s ease-in-out infinite";
+        // rightSide.style.background = "linear-gradient(45deg, #ffffff, #ff00e6, #ff0099)";
+        // rightSide.style.backgroundSize = "300%";
+        // rightSide.style.animation = "sideToSide 20s ease-in-out infinite";
+       
     }
     if (tracksongnumber === 1) {
         rightSide.style.background = "linear-gradient(45deg, #000000, #ff00e6, #000000)";
