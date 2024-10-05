@@ -476,10 +476,10 @@ showMusicInfo(randomInfo)
 }
 })
 
-rotation.addEventListener("click", function(e){
-if(songPicture){
-    songPicture.classList.toggle('play');
-}else{
-    songPicture.classList.remove('play');
-}
-})
+// rotation.addEventListener("click", function(e){
+// if(songPicture){
+//     songPicture.classList.toggle('play');
+// }else{
+//     songPicture.classList.remove('play');
+// }
+// })
