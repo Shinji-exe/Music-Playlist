@@ -12,7 +12,7 @@ const currentSong = document.getElementById("currentSong")
 const totalAmount = document.getElementById("total")
 const section1 = document.querySelector(".info")
 const imagePlace = document.getElementById("imagePlacement")
-
+const rotation = document.getElementById("toggleRotation")
 
 let tracksongnumber = 0;
 let isPlaying = false;
@@ -473,5 +473,13 @@ randomInfo = infoAbout[randomInfo]
 showMusicInfo(randomInfo)
 }else if(tracksongnumber === 1){
     showMusicInfo("Testing for music track two")
+}
+})
+
+rotation.addEventListener("click", function(e){
+if(songPicture){
+    songPicture.classList.toggle('play');
+}else{
+    songPicture.classList.remove('play');
 }
 })
